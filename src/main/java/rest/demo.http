@@ -31,6 +31,10 @@ Content-Type: application/json
 GET http://localhost:8080/tracker_war_exploded/api/project/all
 Accept: application/json
 
+### Get all projectsHours
+GET http://localhost:8080/tracker_war_exploded/api/projectHours/all
+Accept: application/json
+
 ### Create project
 POST http://localhost:8080/tracker_war_exploded/api/project/createproject
 Content-Type: application/json
