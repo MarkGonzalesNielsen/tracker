@@ -29,8 +29,8 @@ public class ProjectResource {
     @GET
     @Path("all")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getAll() {
-        List<ProjectDTO> rns = FACADE.getAll();
+    public Response getAllProjects() {
+        List<ProjectDTO> rns = FACADE.getAllProjects();
         return Response.ok().entity(GSON.toJson(rns)).build();
     }
 
@@ -40,8 +40,8 @@ public class ProjectResource {
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     //@RolesAllowed("user")
-    public Response createBoat(ProjectDTO projectDTO) {
-        projectDTO = FACADE.create(projectDTO);
+    public Response createProject(ProjectDTO projectDTO) {
+        projectDTO = FACADE.createProject(projectDTO);
         return Response.ok().entity(GSON.toJson(projectDTO)).build();
 
     }

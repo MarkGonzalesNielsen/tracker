@@ -27,29 +27,30 @@ Content-Type: application/json
 "deckSize": "10"
 }
 
-### Get boat
-GET http://localhost:8080/CA2_war_exploded/api/boat/all
+### Get all projects
+GET http://localhost:8080/tracker_war_exploded/api/project/all
 Accept: application/json
 
-### Create boat
-POST http://localhost:8080/CA2_war_exploded/api/boat/create
+### Create project
+POST http://localhost:8080/tracker_war_exploded/api/project/createproject
 Content-Type: application/json
 
 {
-  "navn": "Dorte"
+  "description": "ok",
+  "name": "ok"
 }
 
-### Edit boat
-//udkommenter adminfilter i ressource og redepliy for at teste
-PUT http://localhost:8080/CA2_war_exploded/api/boat/1
-Content-Type: application/json
-
-{
-  "navn": "patrick"
-}
-
-### Delete boat by id
-DELETE http://localhost:8080/CA2_war_exploded/api/boat/1011
+#### Edit boat
+#//udkommenter adminfilter i ressource og redepliy for at teste
+#PUT http://localhost:8080/CA2_war_exploded/api/boat/1
+#Content-Type: application/json
+#
+#{
+#  "navn": "patrick"
+#}
+#
+#### Delete boat by id
+#DELETE http://localhost:8080/CA2_war_exploded/api/boat/1011
 
 
 

@@ -11,7 +11,7 @@ public class Project {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     private String name;
     private String description;
 
@@ -24,7 +24,7 @@ public class Project {
     public Project() {
     }
 
-    public Project(int id, String name, String description) {
+    public Project(long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -40,11 +40,11 @@ public class Project {
     }
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
