@@ -4,6 +4,7 @@ import entities.ProjectHours;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ProjectHoursDTO {
     private long id;
@@ -64,5 +65,18 @@ public class ProjectHoursDTO {
         List<ProjectHoursDTO> rmdtos = new ArrayList();
         rms.forEach(rm -> rmdtos.add(new ProjectHoursDTO(rm)));
         return rmdtos;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProjectHoursDTO that = (ProjectHoursDTO) o;
+        return id == that.id && hoursSpendt.equals(that.hoursSpendt) && userStory.equals(that.userStory) && description.equals(that.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, hoursSpendt, userStory, description);
     }
 }

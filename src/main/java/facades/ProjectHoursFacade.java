@@ -37,6 +37,7 @@ public class ProjectHoursFacade {
 
     }
 
+
     public void deleteProjectHours(int pn) {
         EntityManager em = emf.createEntityManager();
         ProjectHours a = (em.find(ProjectHours.class, (long) pn));

@@ -4,8 +4,11 @@ import dtos.ProjectDTO;
 import entities.RenameMe;
 import entities.Project;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
+import io.restassured.response.Response;
 import org.glassfish.grizzly.http.server.HttpServer;
+import org.glassfish.grizzly.http.util.HttpStatus;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.junit.jupiter.api.AfterAll;
@@ -21,10 +24,10 @@ import java.net.URI;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.path.json.config.JsonParserType.GSON;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.hamcrest.Matchers.hasEntry;
+import static org.hamcrest.Matchers.*;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -105,5 +108,28 @@ class ProjectResourceTest {
         ProjectDTO p2 = new ProjectDTO(t2);
         assertThat(projectDTOS, containsInAnyOrder(p1,p2));
     }
+
+//    @Test
+//    void createProject()
+//    {
+//        Project project = new Project("ok", "ok");
+//        given()
+//                .contentType("application/json")
+//                .body(project)
+//                .when()
+//                .post("/project").then()
+//                .assertThat()
+//                .statusCode(HttpStatus.OK_200.getStatusCode())
+//                .body("desctiption", equalTo("ok"));
+//        given()
+//                .contentType("application/json")
+//                .get("/project/all").then()
+//                .assertThat()
+//                .statusCode(HttpStatus.OK_200.getStatusCode())
+//                .body("", hasSize(3));
+//    }
+
+
+
     
 }
