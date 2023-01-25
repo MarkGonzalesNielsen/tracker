@@ -4,6 +4,7 @@ import entities.Project;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ProjectDTO {
     private long id;
@@ -58,5 +59,18 @@ public class ProjectDTO {
         List<ProjectDTO> rmdtos = new ArrayList();
         rms.forEach(rm -> rmdtos.add(new ProjectDTO(rm)));
         return rmdtos;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProjectDTO that = (ProjectDTO) o;
+        return id == that.id && name.equals(that.name) && description.equals(that.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description);
     }
 }

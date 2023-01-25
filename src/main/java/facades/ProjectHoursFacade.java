@@ -31,7 +31,6 @@ public class ProjectHoursFacade {
         } finally {
             em.close();
         }
-
     }
 
 }
