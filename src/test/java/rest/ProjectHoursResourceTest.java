@@ -88,8 +88,18 @@ class ProjectHoursResourceTest {
     }
 
 
+
     @Test
-    void deleteProjectHours() {
+    void deleteProjectHours() throws Exception{
+
+        ProjectHoursDTO projectHoursDTO = new ProjectHoursDTO(t1);
+
+        given()
+                .contentType("application/json")
+                .delete("projectHours/delete/" + projectHoursDTO.getId())
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode());
     }
 
     @Test
