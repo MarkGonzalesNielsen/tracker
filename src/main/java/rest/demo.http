@@ -53,8 +53,9 @@ Content-Type: application/json
 }
 
 
-#### Delete boat by id
-#DELETE http://localhost:8080/CA2_war_exploded/api/boat/1011
+### Delete boat by id
+DELETE http://localhost:8080/tracker_war_exploded/api/projectHours/delete/1
+Content-Type: application/json
 
 
 
