@@ -1,6 +1,7 @@
 package facades;
 
 
+import dtos.ProjectHoursDTO;
 import entities.ProjectHours;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -47,7 +48,11 @@ class ProjectHoursFacadeTest {
     }
 
     @Test
-    void updateProjectHours() {
+    void updateProjectHours() throws Exception {
+        t1.setDescription("OMEGA");
+        ProjectHoursDTO t1New = projectHoursFacade.updateProjectHours(new ProjectHoursDTO(t2));
+        assertEquals(t1New.getHoursSpendt(), t2.getHoursSpendt());
+        assertNotEquals(t2.getHoursSpendt(),"200");
     }
 
     @Test
