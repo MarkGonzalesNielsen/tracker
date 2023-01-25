@@ -40,15 +40,19 @@ Content-Type: application/json
   "name": "ok"
 }
 
-#### Edit boat
-#//udkommenter adminfilter i ressource og redepliy for at teste
-#PUT http://localhost:8080/CA2_war_exploded/api/boat/1
-#Content-Type: application/json
-#
-#{
-#  "navn": "patrick"
-#}
-#
+### Edit projectHours
+//udkommenter adminfilter i ressource og redepliy for at teste
+//atributterne ordret fra entiteten
+PUT http://localhost:8080/tracker_war_exploded/api/projectHours/1
+Content-Type: application/json
+
+{
+  "description": "ok1",
+  "hoursSpendt": "ok2",
+  "userStory": "ok3"
+}
+
+
 #### Delete boat by id
 #DELETE http://localhost:8080/CA2_war_exploded/api/boat/1011
 

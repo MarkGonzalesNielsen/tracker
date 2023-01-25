@@ -50,14 +50,14 @@ public class ProjectFacadeTest {
         }
     }
 
-//    @Test
-//    void getAllProjects()  {
-//        List<ProjectDTO> boatDTOList = facade.getAllProjects();
-//        int expected = 2;
-//        int actual = boatDTOList.size();
-//        assertEquals(expected, actual);
-//        assertThat(boatDTOList, containsInAnyOrder(new ProjectDTO(m1), new ProjectDTO(m2)));
-//    }
+    @Test
+    void getAllProjects()  {
+        List<ProjectDTO> boatDTOList = facade.getAllProjects();
+        int expected = 2;
+        int actual = boatDTOList.size();
+        assertEquals(expected, actual);
+        assertThat(boatDTOList, containsInAnyOrder(new ProjectDTO(m1), new ProjectDTO(m2)));
+    }
 
     @Test
     void createProject() {

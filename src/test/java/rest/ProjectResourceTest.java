@@ -21,8 +21,11 @@ import java.net.URI;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.hasEntry;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProjectResourceTest {
@@ -102,4 +105,5 @@ class ProjectResourceTest {
         ProjectDTO p2 = new ProjectDTO(t2);
         assertThat(projectDTOS, containsInAnyOrder(p1,p2));
     }
+    
 }
