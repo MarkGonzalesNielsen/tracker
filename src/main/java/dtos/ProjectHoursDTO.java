@@ -1,5 +1,6 @@
 package dtos;
 
+import entities.Project;
 import entities.ProjectHours;
 
 import java.util.ArrayList;
@@ -79,4 +80,14 @@ public class ProjectHoursDTO {
     public int hashCode() {
         return Objects.hash(id, hoursSpendt, userStory, description);
     }
+
+    public static List<ProjectHoursDTO> getHourDtos(List<ProjectHours> rms) {
+        List<ProjectHoursDTO> rmdtos = new ArrayList();
+        rms.forEach(rm -> rmdtos.add(new ProjectHoursDTO(rm)));
+        return rmdtos;
+    }
+
+
+
+
 }

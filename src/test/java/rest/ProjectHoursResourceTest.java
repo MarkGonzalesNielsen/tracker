@@ -1,6 +1,8 @@
 package rest;
 
 import dtos.ProjectDTO;
+import dtos.ProjectHoursDTO;
+import entities.ProjectHours;
 import entities.RenameMe;
 import entities.Project;
 import io.restassured.RestAssured;
@@ -22,7 +24,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
 import java.util.List;
-
 import static io.restassured.RestAssured.given;
 import static io.restassured.path.json.config.JsonParserType.GSON;
 import static org.hamcrest.CoreMatchers.hasItems;
@@ -31,11 +32,11 @@ import static org.hamcrest.Matchers.*;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 
-class ProjectResourceTest {
+class ProjectHoursResourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
-    private static Project t1, t2;
+    private static ProjectHours t1, t2;
 
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
@@ -73,11 +74,11 @@ class ProjectResourceTest {
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
-        t1 = new Project("Big Project","SkyScraper");
-        t2 = new Project("ok","ok");
+        t1 = new ProjectHours("200","SkyScraper","Huge Project");
+        t2 = new ProjectHours("70","ok","Small Project");
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("Project.deleteAllRows").executeUpdate();
+            em.createNamedQuery("ProjectHours.deleteAllRows").executeUpdate();
             em.persist(t1);
             em.persist(t2);
             em.getTransaction().commit();
@@ -86,43 +87,25 @@ class ProjectResourceTest {
         }
     }
 
+
     @Test
-    public void testServerIsUp() {
-        given().when().get("/xxx").then().statusCode(200);
+    void deleteProjectHours() {
     }
 
-    //husk hashcode og equals i DTO
     @Test
-    void getAll()
+    void getAllProjectHours()
     {
-        List<ProjectDTO> projectDTOS;
+        List<ProjectHoursDTO> projectHoursDTOList;
 
-        projectDTOS = given()
+        projectHoursDTOList = given()
                 .contentType("application/json")
                 .when()
-                .get("/project/all")
+                .get("/projectHours/all")
                 .then()
-                .extract().body().jsonPath().getList("", ProjectDTO.class);
+                .extract().body().jsonPath().getList("", ProjectHoursDTO.class);
 
-        ProjectDTO p1 = new ProjectDTO(t1);
-        ProjectDTO p2 = new ProjectDTO(t2);
-        assertThat(projectDTOS, containsInAnyOrder(p1,p2));
+        ProjectHoursDTO p1 = new ProjectHoursDTO(t1);
+        ProjectHoursDTO p2 = new ProjectHoursDTO(t2);
+        assertThat(projectHoursDTOList, containsInAnyOrder(p1,p2));
     }
-
-    @Test
-    void createGuide() {
-        given()
-                .contentType(ContentType.JSON)
-                .body(new ProjectDTO(t1))
-                .when()
-                .post("project/createproject")
-                .then()
-                .body("name", equalTo("Big Project"))
-                .body("description", equalTo("SkyScraper"))
-                .body("id", notNullValue());
-    }
-
-
-
-    
 }

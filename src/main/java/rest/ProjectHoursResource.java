@@ -2,6 +2,7 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dtos.ProjectDTO;
 import dtos.ProjectHoursDTO;
 import entities.ProjectHours;
 import facades.ProjectHoursFacade;
@@ -51,6 +52,15 @@ public class ProjectHoursResource {
         FACADE.deleteProjectHours(id);
         return Response.ok().entity(GSON.toJson(id)).build();
     }
+
+    @GET
+    @Path("all")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getAllProjectHours() {
+        List<ProjectHoursDTO> rns = FACADE.getAllProjectHours();
+        return Response.ok().entity(GSON.toJson(rns)).build();
+    }
+
 
 
 

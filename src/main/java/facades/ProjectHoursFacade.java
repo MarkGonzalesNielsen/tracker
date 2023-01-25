@@ -1,10 +1,14 @@
 package facades;
 
+import dtos.ProjectDTO;
 import dtos.ProjectHoursDTO;
+import entities.Project;
 import entities.ProjectHours;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class ProjectHoursFacade {
 
@@ -49,5 +53,15 @@ public class ProjectHoursFacade {
             em.close();
         }
     }
+
+    public List<ProjectHoursDTO> getAllProjectHours() {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<ProjectHours> query = em.createQuery("SELECT p FROM ProjectHours p", ProjectHours.class);
+        List<ProjectHours> rms = query.getResultList();
+        return ProjectHoursDTO.getHourDtos(rms);
+    }
+
+
+
 
 }
